@@ -1,0 +1,29 @@
+<% if user_signed_in? %> 
+    <div class="card">
+      <div class="card-header">
+        <h4>Friends</h4>
+      </div>
+      <div class="card-body">
+        <div id="friends">
+          <% @friends.each do |friend| %>
+          <% if friend.user == current_user %>
+          <%= render friend %>
+        <p>
+          <%= link_to "Show this friend", friend,class: 'btn btn-secondary btn-sm' %>
+        </p>
+        <% end %>
+      <% end %>
+    </div>
+      </div>
+    </div>
+
+    <br>
+
+    <%= link_to "New friend", new_friend_path , class: 'btn btn-secondary btn-sm' %>
+
+<% else %>
+
+<h1> Welcome to the Friends App </h1>
+<p>Where you can freely interact with others </p>
+
+<% end %>
